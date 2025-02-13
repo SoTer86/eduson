@@ -1,3 +1,4 @@
+import os
 import random
 import colorama
 
@@ -15,6 +16,9 @@ def init_player():
 
 
 def draw_board(board):
+    
+    os.system('clear')
+    
     for i in range(MATRIX):
         for j in range(MATRIX):
             if board[j][i] == 'X':
