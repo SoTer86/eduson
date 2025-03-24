@@ -15,7 +15,7 @@ def create_note():
     build_note(note_text, note_name)
 
 def open_txt(filename):
-    
+    ...
 
 def read_note(note_name = None):
     if not note_name:
