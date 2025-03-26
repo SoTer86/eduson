@@ -27,6 +27,7 @@ def read_note(name = None, isprint=True):
         
     if isprint:
         print(f"[{note_name}] {text}")
+    return text
 
 
 def edit_note():
@@ -45,19 +46,22 @@ def delete_note():
     else:
         print("Note not found")
 
-def display_notes(key = None):
-    list_txt = [txt for txt in os.listdir() if txt.endswith('.txt')]
-    for txt in list_txt:
-        read_note(txt, isprint=False)
+
+def display_notes(reverse = False):
+    notes = [note for note in os.listdir() if note.endswith('.txt')]
+    values = [read_note(note[:-4], isprint=False) for note in notes]
+    di = dict(zip(notes, values))
+    
+    res = sorted(di.items(), key=lambda x: len(x[1]), reverse=reverse)
+    
+    for k, v in res:
+        print(f"[{k}]: {v}")
         
     
-
 def display_sorted_notes():
-    display_notes()
+    display_notes(reverse=True)
     
     
-
-
 def print_menu():
     menu = [
         'M E N U : ',
