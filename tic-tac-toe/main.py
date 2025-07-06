@@ -15,7 +15,7 @@ def init_player():
     return player
 
 
-def draw_board(board):
+def draw_board(board: list[str]):
     
     os.system('clear')
     
@@ -30,18 +30,18 @@ def draw_board(board):
         print('')
     
 
-def ask_move(player, board):
+def ask_move(player: str, board: list[str]):
     x, y = map(int, input('Введите координаты: ').split())
     if 0 > x > MATRIX or 0 > y > MATRIX:
         ask_move(player, board)
     return x, y
 
 
-def make_move(player, board, x, y):
+def make_move(player: str, board: list[str], x: int, y: int):
     return board[x][y] not in LIST_X0
 
 
-def ask_and_make_move(player, board):
+def ask_and_make_move(player: str, board):
     while True:
         x, y = ask_move(player, board)
         if make_move(player, board, x, y):
@@ -86,7 +86,7 @@ def robot_move(player, board):
 
 
 def tic_tac_toe():
-    board = [['.'] * MATRIX for i in range(MATRIX)]
+    board: list[str] = [['.'] * MATRIX for i in range(MATRIX)]
     player = init_player()
     
     draw_board(board)
